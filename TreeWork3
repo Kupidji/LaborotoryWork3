@@ -1,0 +1,20 @@
+// Дано дерево поиска и указатель на корень дерева p1
+// Необходимо вывести содержание дерева в убывающем порядке
+
+#include "pt4.h"
+#include <iostream>
+using namespace std;
+
+void recPrint(PNode Tree) {
+	if (!Tree) return;
+	recPrint(Tree->Right);
+	pt << Tree->Data;
+	recPrint(Tree->Left);
+}
+
+void Solve() {
+	Task("TreeWork3");
+	PNode p;
+	pt >> p;
+	recPrint(p);
+}
