@@ -1,0 +1,27 @@
+//Дан адрес P1 записи типа TNode — корня дерева.Эта запись связана полями Left и Right
+//с другими записями того же типа(дочерними вершинами), они, в свою очередь, — со своими
+//дочерними вершинами, и так далее до записей, поля Left и Right которых равны NULL
+//(у некоторых вершин может быть равно NULL одно из полей — Left или Right).
+//Вывести количество вершин дерева.
+
+#include "pt4.h"
+using namespace std;
+
+int k = 0;
+
+void TreeTop(PNode Tree) {
+	if (!Tree)
+		return;
+	TreeTop(Tree->Left);
+	k++;
+	TreeTop(Tree->Right);
+}
+
+void Solve() {
+	Task("TreeWork12");
+	PNode p;
+	pt >> p;
+	TreeTop(p);
+	pt << k;
+
+}
