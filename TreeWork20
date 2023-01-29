@@ -1,0 +1,29 @@
+//Дано бинарное дерево и указатель корень дерева P1.Необходимо определить,
+//является ли дерево АВЛ - сбалансированным.В качестве результата
+//вывести логическое значение : True или False.Дерево называется
+//АВЛ - сбалансированным, если для каждой его вершины выполнено условие :
+//высота ее левого и правого поддерева отличается не больше, чем на 1.
+
+#include "pt4.h"
+using namespace std;
+
+bool answer = true;
+
+int checkTree(PNode tree) {
+	int l, r;
+	if (tree->Left != NULL) l = checkTree(tree->Left);
+	else l = 0;
+	if (tree->Right != NULL) r = checkTree(tree->Right);
+	else r = 0;
+	if (abs(l - r) > 1) answer = false;
+	if (r > l) return r + 1;
+	else return l + 1;
+}
+
+void Solve() {
+    Task("TreeWork20");
+	PNode tree;
+	pt >> tree;
+	checkTree(tree);
+	pt << answer;
+}
